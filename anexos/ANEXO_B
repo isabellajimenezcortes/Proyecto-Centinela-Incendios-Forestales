@@ -1,0 +1,93 @@
+
+# Anexo C. Checklist de protección de datos personales
+
+**Proyecto:** Centinela de Incendios Forestales  
+**Normativa de referencia:** Ley 1581 de 2012 y Decreto 1074 de 2015  
+**Fase:** Propuesta de Datos — Paso 0
+
+## Fuentes evaluadas
+
+| Fuente | Resultado preliminar | Tipo de información |
+|---|---|---|
+| NASA FIRMS — VIIRS S-NPP | Sin datos de personas | Detecciones térmicas y coordenadas geográficas |
+| NASA POWER | Sin datos de personas | Variables meteorológicas y localización espacial |
+| Copernicus Sentinel-2 L2A | Sin datos de personas identificadas | Imágenes satelitales multiespectrales |
+
+La revisión corresponde a los archivos seleccionados para este proyecto.
+
+## A. ¿Hay datos personales?
+
+**FIRMS:** No se identificaron nombres, documentos, teléfonos, correos u otros identificadores personales en las 15 columnas del archivo utilizado.
+**POWER:** Los registros corresponden a variables meteorológicas y coordenadas de consulta, sin información individual.
+**Sentinel-2:** Las imágenes seleccionadas representan la superficie terrestre. No se identificaron personas naturales en los productos analizados.
+Se reconoce que las coordenadas exactas pueden constituir identificadores indirectos cuando permiten relacionar información con una persona. Las coordenadas empleadas identifican unidades de estudio ambiental, no domicilios ni registros asociados a personas.
+**Resultado:** sin datos personales identificados en las tres fuentes utilizadas.
+
+## B. ¿Hay datos sensibles?
+
+No se identificaron registros de salud, biometría, orientación sexual, origen étnico, convicciones religiosas o políticas ni otros datos sensibles en los archivos utilizados.
+**Resultado:** no aplica tratamiento de datos sensibles.
+
+## C. ¿Hay niños, niñas o adolescentes?
+
+Las fuentes no contienen información individual de menores de edad.
+**Resultado:** no se recolectan ni procesan datos de menores.
+
+## D. Base legal o autorización para datos de terceros
+
+Las tres fuentes corresponden a plataformas públicas oficiales de información científica.
+Se utilizarán únicamente datos ambientales y satelitales conforme a las condiciones de uso de cada fuente.
+No se emplearán bases privadas de empresas, información individual de terceros ni registros sujetos a autorización de titulares.
+
+## E. Finalidad
+
+**Finalidad declarada:** uso académico para estudiar la viabilidad de un sistema experimental de alerta temprana de posibles incendios de vegetación, mediante técnicas de Deep Learning.
+El proyecto no busca identificar personas ni adoptar decisiones automatizadas sobre individuos.
+
+## F. Anonimización y riesgo de reidentificación
+
+No se requiere anonimización de registros personales porque no se han identificado datos de personas en las fuentes utilizadas.
+Se conservarán exclusivamente las coordenadas necesarias para el análisis espacial.
+Las imágenes no se utilizarán para identificar domicilios, propietarios o personas. No se incorporarán datos auxiliares que permitan vincular los registros ambientales con individuos.
+
+**Prueba de reidentificación:** con las columnas y productos seleccionados no se identificó una vía directa para reconocer a una persona natural. Este resultado deberá reevaluarse si se incorporan nuevas fuentes.
+
+## G. Licencia de uso
+
+| Fuente | Condiciones a documentar |
+|---|---|
+| NASA FIRMS | Política oficial de acceso, cita de procedencia y condiciones específicas del producto |
+| NASA POWER | Política de datos científicos abiertos de NASA y reconocimiento de la fuente |
+| Sentinel-2 | Condiciones de datos Copernicus Sentinel y atribución de procedencia |
+
+Los enlaces oficiales están registrados en el README y el Anexo B.
+Antes de redistribuir archivos originales se revisarán las condiciones específicas de cada producto.
+
+## H. Transferencia o transmisión internacional
+
+Para el procesamiento y documentación se han utilizado plataformas como Google Colab, GitHub y un asistente de IA.
+Solo se compartirán datos ambientales sin personas identificables.
+No se subirán a estas plataformas documentos de identidad, datos de salud, bases personales ni registros privados de terceros.
+Si el proyecto incorpora información personal en el futuro, deberá realizarse una nueva evaluación antes de compartirla.
+
+## I. Minimización y conservación
+
+Se seleccionarán únicamente las variables necesarias para el objetivo predictivo.
+Los archivos de trabajo se conservarán durante el desarrollo académico en el almacenamiento del proyecto y de los integrantes autorizados.
+Se propone revisar y eliminar copias de trabajo innecesarias al finalizar el curso o la Fase 3, respetando los requerimientos de conservación de evidencias académicas.
+
+## J. Publicación del repositorio
+El repositorio del proyecto es público.
+Los archivos publicados deberán cumplir las condiciones de redistribución aplicables y no contener datos personales.
+Cuando una fuente no permita redistribución, se publicará el procedimiento de descarga en lugar de su contenido original.
+Los archivos de salida y capturas serán revisados antes de publicarse.
+
+## Declaración
+Los integrantes declaran que el presente checklist describe las fuentes seleccionadas y su revisión preliminar de protección de datos personales.
+
+| Integrante | Estado | Fecha |
+|---|---|---|
+| Isabella Jiménez Cortés | Revisado y aprobado | 31/10/2026 |
+| Juan David Bernal | Revisado y aprobado | 31/10/2026 |
+| David Felipe Tautiva | Revisado y aprobado | 31/10/2026 |
+
