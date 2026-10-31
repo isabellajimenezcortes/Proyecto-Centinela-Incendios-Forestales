@@ -1,7 +1,6 @@
 """Reproduce las 10 filas exploratorias de imagen-clima del Anexo A.
 Entradas: dos ZIP originales Copernicus, CSV de cuadriculas, CSV de 9 con clima
-salida: CSV y Markdown. Requiere pandas numpy rasterio shapely pyproj.
-No realiza SCL, validacion administrativa, ni control de cobertura VIIRS.
+salida: CSV.
 """
 from pathlib import Path
 import hashlib, io, zipfile
