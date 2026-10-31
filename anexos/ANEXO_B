@@ -1,0 +1,21 @@
+
+
+## 1. Cadena de procedencia
+
+Para garantizar la trazabilidad de los datos utilizados en el
+Proyecto Centinela de Incendios Forestales, se identificaron
+los archivos originales descargados de las plataformas
+oficiales NASA FIRMS, NASA POWER y Copernicus Data Space.
+
+Se registraron los nombres de los archivos, sus productores,
+las fechas de creación local y las huellas digitales SHA-256
+calculadas mediante Windows PowerShell.
+
+| Archivo original | Productor y enlace oficial | Fecha de creación local | SHA-256 |
+|---|---|---|---|
+| `viirs-snpp_2024_all_countries.zip` | [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/download/) | 31/10/2026, 00:10:48 | `A38653B029D03B48868272AB2CADE671D8E2DF4CBCBDA205BA9FDEAE023E66AE` |
+| `POWER_Point_Daily_20240101_20240115_003d85N_071d55W_UTC.csv` | [NASA POWER](https://power.larc.nasa.gov/) | 31/10/2026, 00:15:57 | `E8D36060B3111994723050134E1FF3F8A5EE9952622086843F95AEA902E9FB55` |
+| `Browser_images (3).zip` | [Copernicus Sentinel-2](https://dataspace.copernicus.eu/) | 31/10/2026, 02:03:42 | `C7F827417EDB66459BD3380C53932F8F8630CADE1FB2142E1B2337365B745F08` |
+| `Browser_images (4).zip` | [Copernicus Sentinel-2](https://dataspace.copernicus.eu/) | 31/10/2026, 02:07:51 | `9A93D30A92CD41573DE76BE074A86D4762D392EBEBDB62E27BCEEAAE06893EED` |
+
+**Método de verificación:** se utilizó el comando`Get-FileHash -Algorithm SHA256` de Windows PowerShell.
