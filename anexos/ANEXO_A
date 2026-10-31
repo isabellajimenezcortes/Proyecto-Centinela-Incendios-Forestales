@@ -1,0 +1,30 @@
+# Anexo A. Prueba de acoplamiento de 10 registros reales
+
+**Proyecto:** Centinela de Incendios Forestales  
+**Integrantes:** Isabella Jiménez Cortés, Juan David Bernal y David Felipe Tautiva  
+**Fecha de referencia:** 15 de enero de 2024  
+**Estado:** Prueba exploratoria de acoplamiento; controles de calidad pendientes.
+
+## Tabla de acoplamiento
+
+**Clave por muestra:** `(id_cuadricula, fecha_referencia)`; las cuadrículas son de 2 × 2 km (UTM EPSG:32619). El dato de imagen es el NDVI medio calculado con Sentinel-2 L2A del **10/01/2024**; el de serie es la temperatura media (T2M) de NASA POWER entre el **09/01/2024 y el 15/01/2024**.
+
+| N.º | Clave (entidad, ventana) | Dato de imagen | Dato de serie |
+|---:|---|---|---|
+| 1 | `META_PILOTO_01, 2024-01-15` | NDVI = 0,4993 | T2M = 26,660 °C |
+| 2 | `META_PILOTO_02, 2024-01-15` | NDVI = 0,5360 | T2M = 26,660 °C |
+| 3 | `META_PILOTO_03, 2024-01-15` | NDVI = 0,4852 | T2M = 26,660 °C |
+| 4 | `META_PILOTO_04, 2024-01-15` | NDVI = 0,5142 | T2M = 26,660 °C |
+| 5 | `META_PILOTO_05, 2024-01-15` | NDVI = 0,4879 | T2M = 26,574 °C |
+| 6 | `META_PILOTO_06, 2024-01-15` | NDVI = 0,5240 | T2M = 26,660 °C |
+| 7 | `META_PILOTO_07, 2024-01-15` | NDVI = 0,4972 | T2M = 26,574 °C |
+| 8 | `META_PILOTO_08, 2024-01-15` | NDVI = 0,5280 | T2M = 26,574 °C |
+| 9 | `META_PILOTO_09, 2024-01-15` | NDVI = 0,4942 | T2M = 26,660 °C |
+| 10 | `META_PILOTO_10, 2024-01-15` | NDVI = 0,4946 | T2M = 26,660 °C |
+
+## Código o consulta que produjo las uniones
+
+- **Consulta meteorológica:** API diaria de [NASA POWER](https://power.larc.nasa.gov/api/temporal/daily/point), parámetros `T2M,RH2M,PRECTOTCORR`, `community=AG`, fechas `20240109` a `20240115`, formato `JSON`, coordenadas del centro de cada cuadrícula.
+- **Imágenes:** bandas originales `B02`, `B03`, `B04`, `B08` y `B11` del 10/01/2024. Los recortes provienen de `Browser_images (3).zip` (nueve cuadrículas) y `Browser_images (4).zip` (cuadrícula 05).
+- **Transformación:** NDVI = `(B08-B04)/(B08+B04)`; se calculó el promedio de píxeles con valores espectrales utilizables dentro de cada cuadrícula. T2M es el promedio de siete registros diarios por ubicación.
+- **Script de soporte:** [`Codigo_Anexo_A.py`](./Codigo_Anexo_A.py); **tabla ampliada de soporte:** [`ANEXO_A_datos`](./ANEXO_A_datos.csv). El script necesita los ZIP y CSV de entrada originales y sus rutas deben adaptarse al entorno en que se ejecute.
