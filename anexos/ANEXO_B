@@ -1,15 +1,14 @@
 
+# Anexo B.
+
+**Proyecto:** Centinela de Incendios Forestales  
+**Integrantes:** Isabella Jiménez Cortés, Juan David Bernal y David Felipe Tautiva
 
 ## 1. Cadena de procedencia
 
-Para garantizar la trazabilidad de los datos utilizados en el
-Proyecto Centinela de Incendios Forestales, se identificaron
-los archivos originales descargados de las plataformas
-oficiales NASA FIRMS, NASA POWER y Copernicus Data Space.
+Para garantizar la trazabilidad de los datos utilizados en el Proyecto Centinela de Incendios Forestales, se identificaron los archivos originales descargados de las plataformas oficiales NASA FIRMS, NASA POWER y Copernicus Data Space.
 
-Se registraron los nombres de los archivos, sus productores,
-las fechas de creación local y las huellas digitales SHA-256
-calculadas mediante Windows PowerShell.
+Se registraron los nombres de los archivos, sus productores, las fechas de creación local y las huellas digitales SHA-256 calculadas mediante Windows PowerShell.
 
 | Archivo original | Productor y enlace oficial | Fecha de creación local | SHA-256 |
 |---|---|---|---|
@@ -18,4 +17,117 @@ calculadas mediante Windows PowerShell.
 | `Browser_images (3).zip` | [Copernicus Sentinel-2](https://dataspace.copernicus.eu/) | 31/10/2026, 02:03:42 | `C7F827417EDB66459BD3380C53932F8F8630CADE1FB2142E1B2337365B745F08` |
 | `Browser_images (4).zip` | [Copernicus Sentinel-2](https://dataspace.copernicus.eu/) | 31/10/2026, 02:07:51 | `9A93D30A92CD41573DE76BE074A86D4762D392EBEBDB62E27BCEEAAE06893EED` |
 
-**Método de verificación:** se utilizó el comando`Get-FileHash -Algorithm SHA256` de Windows PowerShell.
+**Método de verificación:** se utilizó el comando `Get-FileHash -Algorithm SHA256` de Windows PowerShell.
+
+## 2. Descarga trazable
+
+La adquisición de datos del Proyecto Centinela de Incendios Forestales se realizó a partir de los portales oficiales NASA FIRMS, NASA POWER y Copernicus Data Space Ecosystem.
+
+### Evidencia de adquisición
+
+| Fuente | Método de obtención | Evidencia |
+|---|---|---|
+| NASA FIRMS — VIIRS S-NPP | Descarga histórica del archivo ZIP correspondiente a 2024 | `viirs-snpp_2024_all_countries.zip`, registrado con SHA-256 en el apartado 1 |
+| NASA POWER | Consulta mediante API REST ejecutada en Google Colab | URL reproducible y respuesta de la API |
+| Copernicus Sentinel-2 L2A | Descarga de bandas multiespectrales mediante Copernicus Browser | `Browser_images (3).zip` y `Browser_images (4).zip`, registrados con SHA-256 |
+
+### Consulta reproducible de NASA POWER
+
+Se ejecutó una consulta a la API oficial para la ubicación 3,85° N y -71,55° O, correspondiente al periodo 9–15 de enero de 2024.
+
+**Parámetros:**
+
+- Temperatura a 2 metros: `T2M`.
+- Humedad relativa: `RH2M`.
+- Precipitación: `PRECTOTCORR`.
+- Frecuencia: diaria.
+- Formato: JSON.
+
+**Resultados:**
+
+| Variable | Días recuperados |
+|---|---:|
+| T2M | 7 |
+| RH2M | 7 |
+| PRECTOTCORR | 7 |
+
+La consulta se ejecutó correctamente, recuperando las tres variables meteorológicas solicitadas.
+
+### Verificación de referencias a Kaggle
+
+Se realizó una revisión de las celdas de código del cuaderno `obtenerdata.ipynb`, utilizado durante el procesamiento exploratorio.
+
+Se buscaron las expresiones:
+
+- `kaggle`
+- `kagglehub`
+- `/kaggle/input`
+
+**Resultado de la ejecución:**
+
+- Cuaderno revisado: `obtenerdata.ipynb`.
+- Coincidencias encontradas: **0**.
+- No se identificaron referencias a Kaggle en las celdas de código revisadas.
+
+Este resultado corresponde exclusivamente al cuaderno analizado y no sustituye la revisión de otros scripts ni la búsqueda de espejos del apartado 3.
+
+### Evidencia reproducible
+
+Se entrega el archivo [anexob.ipynb](anexob.ipynb).
+
+## 3. Búsqueda declarada de espejos
+
+**Fecha de búsqueda:** 31 de octubre de 2026.
+
+**Plataforma consultada:** Kaggle.
+
+**Términos de búsqueda:**
+
+- `VIIRS S-NPP Colombia 2024 NASA FIRMS`
+- `NASA POWER weather data`
+- `Sentinel-2 wildfire prediction`
+- `Wildfire satellite time series`
+
+### Resultados encontrados
+
+| N.º | Coincidencia | Enlace | Relación con el proyecto |
+|---|---|---|---|
+| 1 | TS-SatFire | [Kaggle - TS-SatFire](https://www.kaggle.com/dsv/8675553) | Contiene imágenes satelitales y datos ambientales relacionados con incendios, principalmente de Estados Unidos entre 2017 y 2021. |
+| 2 | Spatiotemporal Wildfire Prediction | [Kaggle - Competencia](https://www.kaggle.com/competitions/spatiotemporal-wildfire-prediction) | Propone predecir ignición utilizando secuencias de 60 días, a diferencia de nuestro horizonte de siete días. |
+| 3 | Collect data from POWER Project NASA API | [Kaggle - Cuaderno](https://www.kaggle.com/code/adamprzychodni/collect-data-from-power-project-nasa-api) | Utiliza la API de NASA POWER, pero no corresponde a nuestras coordenadas, fechas y observaciones multimodales verificadas. |
+
+### Resultado de la búsqueda
+
+Se identificaron conjuntos de datos relacionados con la detección y predicción de incendios mediante información satelital y climática.
+
+Ninguna de las tres coincidencias examinadas corresponde, según sus descripciones, al conjunto integrado de cuadrículas de 2 × 2 km construido para el departamento del Meta, Colombia, con datos de enero de 2024.
+
+Sin embargo, no se descarta que existan réplicas parciales de las fuentes originales NASA FIRMS, NASA POWER o Copernicus publicadas en Kaggle.
+
+El proyecto utiliza archivos obtenidos de las plataformas oficiales y realiza un proceso propio de integración espacial, temporal y construcción de etiquetas.
+
+**Conclusión:** se encontraron trabajos similares, pero no se identificó una coincidencia exacta del conjunto integrado del proyecto entre los tres resultados examinados.
+
+## 4. Huella de crudeza (antes de limpiar)
+
+Se analizó el archivo original `viirs-snpp_2024_Colombia.csv` de NASA FIRMS.
+
+| Indicador | Resultado |
+|---|---:|
+| Filas × columnas | 107.010 × 15 |
+| Celdas faltantes | 0 % |
+| Duplicados exactos | 0 |
+| Presuntos fuegos de vegetación (`type = 0`) | 103.008 (96,26 %) |
+| Balance original de la etiqueta predictiva | No disponible; requiere construcción |
+
+**Conclusión:** los datos originales contienen detecciones térmicas individuales y requieren delimitación espacial, construcción de etiquetas binarias y alineación con imágenes y series climáticas. La muestra piloto 5/5 es intencional y no representa la prevalencia real.
+
+## 5. Contraste con el espejo
+
+| Conjunto encontrado en Kaggle | Diferencia identificada |
+|---|---|
+| [TS-SatFire](https://www.kaggle.com/dsv/8675553) | Utiliza datos satelitales relacionados con incendios, pero no corresponde, según su descripción, a nuestra muestra del Meta de enero de 2024. |
+| [Spatiotemporal Wildfire Prediction](https://www.kaggle.com/competitions/spatiotemporal-wildfire-prediction) | Utiliza otro diseño predictivo y un horizonte temporal diferente. |
+| [NASA POWER API](https://www.kaggle.com/code/adamprzychodni/collect-data-from-power-project-nasa-api) | Comparte la fuente meteorológica, pero no nuestra integración de imágenes, clima y etiquetas. |
+
+**Conclusión:** se identificaron proyectos relacionados, pero no una réplica exacta de nuestro conjunto integrado entre los resultados examinados. El contraste se realizó a partir de sus descripciones; no se compararon archivos ni huellas SHA-256.
